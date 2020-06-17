@@ -30,7 +30,7 @@ function radioBillSettingTotal(){
 var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 if (checkedRadioBtn){
     var billItemTypeWithSettings = checkedRadioBtn.value;
-    console.log(billItemTypeWithSettings);
+   //. console.log(billItemTypeWithSettings);
   
     if (billItemTypeWithSettings === "call"){
         totalCall += callsCostSetting;
