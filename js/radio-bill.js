@@ -27,7 +27,6 @@ function radioBillTotal(){
     totalCostElem.innerHTML = totalCost.toFixed(2);
     radioBillTotalColor(totalCost);
 };
-
 function radioBillTotalColor(totalCost)  {
 
 
