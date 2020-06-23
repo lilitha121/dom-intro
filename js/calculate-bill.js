@@ -8,18 +8,19 @@ const billStringElement = document.querySelector(".billString");
 const billTotalSpanElement = document.querySelector(".total");
 
 //create the function that will be called when the calculate button is pressed
-function calculateBill (bill){
+function calculateBill(bill){
+    var billTotal = 0;
 //  * this function should read the string value entered - split it on a comma.
-var separate = bill.split(',')
+var billItems = bill.split(',')
 //  * loop over all the entries in the the resulting list
 for (var i = 0; i < billItems.length; i++) {
-    var billItem = billItems[i].trim();
+    var billItemType = billItems[i].trim();
     
 //  * check if it is a call or an sms and add the right amount to the overall total
-if (billString === "call") {
-    call += 2.75;
-} else if (billString === "sms") {
-    sms += 0.65;
+if (billItemType === "call") {
+    billTotal += 2.75;
+} else if (billItemType === "sms") {
+    billTotal += 0.65;
 }
 }
 //  * once done looping over all the entries - display the total onto the screen in the billTotal element
@@ -51,16 +52,14 @@ billTotalSpanElement.classList.remove("warning");
 };
 
 function calculateBtnClicked () {
-var billString = billStringTotalElement.value;
+var billString = billStringElement.value;
 
 
-  const roundedBillTotal = totalPhoneBill(billString);
+  const roundedBillTotal = calculateBill(billString);
 
-
-billTotalElement.innerHTML = roundedBillTotal;  
 styleTotalColor(roundedBillTotal);
 
-    billTotalElement.innerHTML = roundedBillTotal;
+billTotalSpanElement.innerHTML = roundedBillTotal;
 
 };
 

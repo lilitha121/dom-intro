@@ -7,6 +7,8 @@ const smsTotalSettingsElement = document.querySelector(".smsTotalSettings");
 const totalCostSettingsElement = document.querySelector(".totalSettings");
 //get a reference to the add button
 const addBtnPrimary = document.querySelector(".xbtn");
+const updateBtnElement = document.querySelector(".updateSettings");
+
 // create a variables that will keep track of all the settings
 var callsCostSettingElement = document.querySelector(".callCostSetting");
 var smsCostSettingElement = document.querySelector(".smsCostSetting");
@@ -23,6 +25,16 @@ var callsCostSetting = 0;
 var smsCostSetting = 0;
 var warningLevelSetting = 0;
 var criticalLevelSetting = 0;
+
+function updateSettings(){
+    callsCostSetting = Number(callsCostSettingElement.value)
+    smsCosmsCostSettings = Number(smsCostSettingElement.value)
+    warningLevelSetting = Number(warningLevelSettingElement.value)
+    criticalLevelSetting = Number(criticalLevelSettingElement.value)
+    settingsColor()
+}
+
+
 //add an event listener for when the 'Update settings' button is pressed
 function radioBillSettingTotal(){
     if (totalBills < criticalLevelSetting){
@@ -31,7 +43,7 @@ var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettin
 if (checkedRadioBtn){
     var billItemTypeWithSettings = checkedRadioBtn.value;
    //. console.log(billItemTypeWithSettings);
-  
+
     if (billItemTypeWithSettings === "call"){
         totalCall += callsCostSetting;
     }
@@ -48,7 +60,6 @@ callsTotalSettingsElement.innerHTML = totalCall.toFixed(2);
   }
  }
 }
-    function settingsColor (){
 // * add the appropriate value to the overall total
 function settingsColor (){
       
@@ -62,11 +73,18 @@ function settingsColor (){
     else if (totalBills >= warningLevelSetting){
         totalCostSettingsElement.classList.add("warning");
       
-    }  
-    
+    }      
+
+}
+addBtnPrimary.addEventListener("click", radioBillSettingTotal);
+updateBtnElement.addEventListener("click", updateSettings);
+
 
 // * add nothing for invalid values that is not 'call' or 'sms'.
-}
+
+
+
+// * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen.
-    }
+    
 // * check the value thresholds and display the total value in the right color.
